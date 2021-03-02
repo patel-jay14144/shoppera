@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block search-query %}
+{{ search_query }}
+{% endblock %}
+
+
+{% block body %}
+<div class="row" style="margin-top: 90px;">
+{% if products %}
+	{% for product in products %}
+	<div class="col-4" style="text-align: center;">
+		
+		<img src="{{ product.product_primary_image.url }}" width="50%">
+
+		<h3>{{ product.product_title }}</h3> 
+		<h5>{{ product.product_price }}</h5>
+
+		<a href="/products/buy-this/{{ product.id }}" class="btn btn-secondary">Buy Now</a>
+		<hr>
+	</div>
+	{% endfor %}
+{% else %}
+	<h3>No Result Found</h3>
+	{% endif %}
+</div>
+
+{% endblock %}
